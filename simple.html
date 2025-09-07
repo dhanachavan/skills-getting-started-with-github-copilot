@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple HTML Page</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input {
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to My Page</h1>
+    <p>This is a simple HTML page with a header, paragraph, and a button.</p>
+    <button id="alertButton">Click Me</button>
+    <form id="userForm">
+        <input type="text" name="name" placeholder="Name">
+        <input type="email" name="email" placeholder="Email">
+        <button type="submit">Submit</button>
+    </form>
+    <div id="formResult" style="margin-top: 15px;"></div>
+    <script>
+        // Shows an alert when the button is clicked
+        function handleButtonClick() {
+            alert('Button was clicked!');
+        }
+
+        // Updates the DOM to display the entered name and email
+        function updateFormResult(name, email) {
+            var resultDiv = document.getElementById('formResult');
+            resultDiv.textContent = `Name: ${name}, Email: ${email}`;
+        }
+
+        // Handles form submission, prevents default, and calls updateFormResult
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            var name = this.name.value;
+            var email = this.email.value;
+            updateFormResult(name, email);
+        }
+
+        // Attach event listeners to button and form
+        document.getElementById('alertButton').onclick = handleButtonClick;
+        document.getElementById('userForm').onsubmit = handleFormSubmit;
+    </script>
+</body>
+</html>
